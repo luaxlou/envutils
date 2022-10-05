@@ -2,7 +2,7 @@ package envutils
 
 import (
 	"github.com/joho/godotenv"
-	"github.com/luaxlou/goutils/tools/fileutils"
+	"github.com/luaxlou/fileutils"
 	"log"
 	"os"
 )
@@ -50,7 +50,7 @@ func IsDev() bool {
 
 }
 
-//当处于开发环境时，加载当前目录Env文件
+// 当处于开发环境时，加载当前目录Env文件
 func LoadEnvOnlyDev() {
 
 	if IsDev() {
@@ -58,7 +58,7 @@ func LoadEnvOnlyDev() {
 	}
 }
 
-//加载当前目录Env文件
+// 加载当前目录Env文件
 func LoadEnv() {
 	//多目录检查主要是为了测试代码对于环境变量的加载
 	checkPaths := []string{
@@ -81,4 +81,3 @@ func LoadEnv() {
 	}
 
 }
-
