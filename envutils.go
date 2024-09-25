@@ -63,6 +63,7 @@ func LoadEnv() {
 	//多目录检查主要是为了测试代码对于环境变量的加载
 	checkPaths := []string{
 		"./.env",
+		"~/.env",
 		"../.env",
 		"../../.env",
 		"../../../.env",
