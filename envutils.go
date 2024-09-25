@@ -7,7 +7,7 @@ import (
 	"os"
 )
 
-var currEnv = "dev"
+var currAppEnv = "dev"
 
 const (
 	Prod = "prod"
@@ -24,29 +24,51 @@ func init() {
 
 }
 
+func Getenv(key string) string {
+
+	return os.Getenv(key)
+}
+
+func MustGetenv(key string) string {
+
+	v := os.Getenv(key)
+
+	if v == "" {
+		panic("env", key, "must required")
+	}
+
+	return v
+}
+
+// @Deprecated use SetAppEnv
 func SetEnv(env string) {
 
-	currEnv = env
+	currAppEnv = env
 
 }
 
+// @Deprecated use GetAppEnv
 func GetEnv() string {
-	return currEnv
+	return currAppEnv
+}
+
+func GetAppEnv() string {
+	return currAppEnv
 }
 
 func IsProd() bool {
-	return currEnv == Prod
+	return currAppEnv == Prod
 
 }
 
 func IsTest() bool {
-	return currEnv == Test
+	return currAppEnv == Test
 
 }
 
 func IsDev() bool {
 
-	return currEnv == Dev
+	return currAppEnv == Dev
 
 }
 
