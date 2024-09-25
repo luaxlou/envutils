@@ -58,6 +58,14 @@ func LoadEnvOnlyDev() {
 	}
 }
 
+func LoadEnvByPathname(pathname string) {
+	err := godotenv.Load(pathname)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+}
+
 // 加载当前目录Env文件
 func LoadEnv() {
 	//多目录检查主要是为了测试代码对于环境变量的加载
@@ -73,10 +81,7 @@ func LoadEnv() {
 
 	for _, p := range checkPaths {
 		if fileutils.Exists(p) {
-			err := godotenv.Load(p)
-			if err != nil {
-				log.Fatal(err)
-			}
+			LoadEnvByPathname(p)
 			return
 		}
 	}
