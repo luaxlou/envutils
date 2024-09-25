@@ -34,7 +34,7 @@ func MustGetenv(key string) string {
 	v := os.Getenv(key)
 
 	if v == "" {
-		panic("env", key, "must required")
+		panic("env " + key + " must required")
 	}
 
 	return v
